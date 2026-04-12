@@ -20,6 +20,7 @@ import LoginScreen from "./src/screens/components/LoginScreen";
 import HomeScreen from "./src/screens/components/HomeScreen";
 import SignUpScreen from "./src/screens/components/SignUpScreen";
 import FeedScreen from "./src/screens/components/FeedScreen";
+import WelcomeScreen from "./src/screens/components/WelcomeScreen";
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,7 @@ const linking = {
       Login: "login",
       Signup: "signup",
       Feed: "feed",
+      Welcome: "welcome",
     },
   },
 };
@@ -69,13 +71,15 @@ export default function App() {
 
   if (!fontsLoaded) return null; // avoid flicker
 
-
   return (
-    <NavigationContainer linking={linking} documentTitle={{
-      formatter: (options, route) => "HyperAthlete",
-    }}>
+    <NavigationContainer
+      linking={linking}
+      documentTitle={{
+        formatter: (options, route) => "HyperAthlete",
+      }}
+    >
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Welcome"
         screenOptions={{
           headerShown: false,
         }}
@@ -84,6 +88,14 @@ export default function App() {
           {(props) => (
             <WrappedScreen>
               <HomeScreen {...props} />
+            </WrappedScreen>
+          )}
+        </Stack.Screen>
+
+        <Stack.Screen name="Welcome">
+          {(props) => (
+            <WrappedScreen>
+              <WelcomeScreen {...props} />
             </WrappedScreen>
           )}
         </Stack.Screen>
