@@ -1,0 +1,3 @@
+{
+  "plugins": ["expo-font", "expo-image-picker"]
+}
